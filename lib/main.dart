@@ -1,8 +1,6 @@
 import 'package:custom_mvvm_test/model.dart';
-import 'package:custom_mvvm_test/viewmodel.dart';
 import 'package:custom_mvvm_test/view.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -17,9 +15,21 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ChangeNotifierProvider(
-          create: (context) => NodeModelView(Node(1)),
-          child: const NodeView(),
+        child: Wrap(
+          runSpacing: 4,
+          spacing: 4,
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            NodeView.init(
+              Node(1),
+            ),
+            NodeView.init(
+              Node(2),
+            ),
+            NodeView.init(
+              Node(3),
+            ),
+          ],
         ),
       ),
     );
